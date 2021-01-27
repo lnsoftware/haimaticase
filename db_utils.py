@@ -125,4 +125,6 @@ def get_user_id(phone):
     check_db_connect("himo-micro-user")
     user_id = DBM.query_one("himo-micro-user",F'select id from users where phone = "{phone}"')
     return user_id
+# def get_sale_sku_id():
+
 # print(query_ding_u_id(13676561839))

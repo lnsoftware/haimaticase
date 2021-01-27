@@ -6,22 +6,22 @@ def getproduct_gift():
     # 通用产品券模版id873，可用于最大人数
     # 证件照-正面-白色产品券参数870
     data = {
-	"buy_channel": "personal",
-	"type": "virtual",
-	"user_name": "1",
-	"phone": "19999999991",
-	"pay_type": "cash",
-	"sex": "male",
-	"ori_money": 918,
-	"pay_money": "918",
-	"extend": {
-		"count": 1,
-		"stop_usage": "2021-12-31 23:59:59",
-		"start_usage": "2020-11-30 00:00:00",
-		"template_id": 873,
-		"title": "1"
-	}
-}
+        "buy_channel": "personal",
+        "type": "virtual",
+        "user_name": "1",
+        "phone": "19999999991",
+        "pay_type": "cash",
+        "sex": "male",
+        "ori_money": 918,
+        "pay_money": "918",
+        "extend": {
+            "count": 1,
+            "stop_usage": "2021-12-31 23:59:59",
+            "start_usage": "2020-11-30 00:00:00",
+            "template_id": 208,
+            "title": "1"
+        }
+    }
     res =requests.post(url=url,headers=l.bms_headers,json=data)
     msg = res.json()['msg']
     for i in msg:

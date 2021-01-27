@@ -8,23 +8,23 @@ from config import LoginConfig as l
 def get_giftcode_msg():
     url = l.bms_host + '/himo_product/admin/gift_card_order/create'
     data = {
-	"type": "virtual",
-	"user_name": "1",
-	"phone": "18157566499",
-	"pay_type": "cash",
-	"sex": "male",
-	"ori_money": "400.00",
-	"pay_money": 10,
-	"buy_channel": "personal",
-	"extend": {
-		"money": "100000",
-		"count": 1,
-		"stop_usage": "2023-12-24 14:33:27",
-		"start_usage": "2020-09-24 14:33:27",
-		"cover_id": 1,
-		"title": "1"
-	}
-}
+        "type": "virtual",
+        "user_name": "1",
+        "phone": "18157566499",
+        "pay_type": "cash",
+        "sex": "male",
+        "ori_money": "400.00",
+        "pay_money": 10,
+        "buy_channel": "personal",
+        "extend": {
+            "money": "100000",
+            "count": 1,
+            "stop_usage": "2023-12-24 14:33:27",
+            "start_usage": "2020-09-24 14:33:27",
+            "cover_id": 6,
+            "title": "1"
+        }
+    }
 
     res = requests.post(url=url,headers=l.bms_headers,json=data)
     res = res.json()
@@ -32,7 +32,7 @@ def get_giftcode_msg():
     print(code)
     return code
 
-def login_id(phone=18157566499,password=123456):
+def login_id(phone=19999999991,password=123456):
     url = l.h5_host + '/user_auth/login/pass'
     data = {
         'brand': 'mainto_app',
