@@ -13,11 +13,11 @@ def get_giftcode_msg():
         "phone": "18157566499",
         "pay_type": "cash",
         "sex": "male",
-        "ori_money": "400.00",
+        "ori_money": "706",
         "pay_money": 10,
         "buy_channel": "personal",
         "extend": {
-            "money": "100000",
+            "money": "706",
             "count": 1,
             "stop_usage": "2023-12-24 14:33:27",
             "start_usage": "2020-09-24 14:33:27",
@@ -26,13 +26,13 @@ def get_giftcode_msg():
         }
     }
 
-    res = requests.post(url=url,headers=l.bms_headers,json=data)
+    res = requests.post(url=url,headers=l.bms_headers,json=data,verify=False)
     res = res.json()
     code = jsonpath.jsonpath(res, '$..code')[0]
     print(code)
     return code
 
-def login_id(phone=19999999991,password=123456):
+def login_id(phone=18157566499,password=123456):
     url = l.h5_host + '/user_auth/login/pass'
     data = {
         'brand': 'mainto_app',
@@ -40,7 +40,7 @@ def login_id(phone=19999999991,password=123456):
         'pass': password,
         'temp_token': ''
     }
-    res = requests.get(url=url, params=data)
+    res = requests.get(url=url, params=data,verify=False)
     res = res.headers
     return res['x-stream-id']
 
@@ -50,7 +50,7 @@ def use_giftcode():
     headers = {
         'x-stream-id': login_id()
     }
-    res = requests.post(url=url,headers=headers, json=data)
+    res = requests.post(url=url,headers=headers, json=data,verify=False)
     if res.status_code == 200:
         print("恭喜你礼品卡绑定成功")
     else:

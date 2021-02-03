@@ -23,8 +23,8 @@ def batch_creat():
         "title": "111",
         "count": 1,
         "tempType": "decrease_coupon",
-        "template_id": 1221,
-        "discount": "50",
+        "template_id": 5602,
+        "discount": "200",
         "time": ["2020-09-25 00:00:00", "2022-01-27 23:59:59"],
         "buy_channel": "personal",
         "start_usage": "2020-09-27 00:00:00",
@@ -45,7 +45,7 @@ def batch_creat():
     # }
 
 
-    res = requests.post(url=url,headers=l.bms_headers,json=data)
+    res = requests.post(url=url,headers=l.bms_headers,json=data,verify=False)
     res = res.json()
     msg = res['msg']
     return msg
@@ -58,11 +58,12 @@ def get_card():
         "created_at_end": "2021-09-30 11:38:26"
     }
 
-    res = requests.get(url=url,headers=l.bms_headers,params=params)
+    res = requests.get(url=url,headers=l.bms_headers,params=params,verify=False)
     msg =res.json()['msg']
     # code = jsonpath.jsonpath(res, '$..code')[0]
     for i in msg:
         discode = i['code']
+    print(discode)
     return discode
 
 
@@ -75,7 +76,7 @@ def bind_coupons():
         'x-stream-id': login_id()
 
     }
-    res = requests.post(url=url,headers=headers,json=data)
+    res = requests.post(url=url,headers=headers,json=data,verify=False)
     if res.status_code == 200:
         print("优惠券绑定成功")
     else:

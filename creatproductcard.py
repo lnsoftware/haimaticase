@@ -18,11 +18,11 @@ def getproduct_gift():
             "count": 1,
             "stop_usage": "2021-12-31 23:59:59",
             "start_usage": "2020-11-30 00:00:00",
-            "template_id": 208,
+            "template_id": 1078,
             "title": "1"
         }
     }
-    res =requests.post(url=url,headers=l.bms_headers,json=data)
+    res =requests.post(url=url,headers=l.bms_headers,json=data,verify=False)
     msg = res.json()['msg']
     for i in msg:
         code = i['code']
@@ -36,7 +36,7 @@ def use_productcard():
     data = {
         "preferentialCode": getproduct_gift()
     }
-    res = requests.post(url=url,headers=headers,json=data)
+    res = requests.post(url=url,headers=headers,json=data,verify=False)
     if res.status_code == 200:
         print("产品卡绑定成功")
     else:

@@ -4,16 +4,16 @@ from config import LoginConfig as l
 import jsonpath
 import time
 
-stream_num = "C2021012786620296"
+stream_num = "C2021013156911312"
 # order_id = get_order_id(stream_num)
-order_id = 13349929
+order_id = 13350311
 def shenhe_order():
 
     data = {
         "orderId": order_id
     }
     checker_url = l.store_host + '/project_paperless/manage/second_retoucher/bind_checker'
-    res = requests.post(url=checker_url,headers=l.store_headers, json=data)
+    res = requests.post(url=checker_url,headers=l.store_headers, json=data,verify=False)
     # print(res.json)
 
     data1 = {
@@ -23,8 +23,7 @@ def shenhe_order():
         "streamNum": stream_num
     }
     review_url = l.store_host + '/project_paperless/manage/second_retoucher/review'
-    review = requests.post(url=review_url,headers=l.store_headers,
-                           json=data1)
+    review = requests.post(url=review_url,headers=l.store_headers,json=data1,verify=False)
 
     # print(review.json())
 
@@ -33,12 +32,12 @@ def shenhe_order():
         "orderId":order_id
     }
     retouch_url = l.store_host + '/project_paperless/manage/process/retouch_sign_in'
-    retouch = requests.post(url=retouch_url,headers=l.store_headers,json=data2)
+    retouch = requests.post(url=retouch_url,headers=l.store_headers,json=data2,verify=False)
     print(retouch.json())
 
     # 获取照片id
     photo_url = l.store_host + '/project_paperless/manage/second_retoucher/order_detail'
-    photo = requests.get(url=photo_url,headers=l.store_headers,params=data2)
+    photo = requests.get(url=photo_url,headers=l.store_headers,params=data2,verify=False)
     photo_json = photo.json()
     photo_idf = jsonpath.jsonpath(photo_json,"$..photo_id")[0]
     photo_ids = jsonpath.jsonpath(photo_json,"$..photo_id")[5]
@@ -49,13 +48,13 @@ def shenhe_order():
         "staffType": "kps"
     }
     begin_url = l.store_host + '/project_paperless/manage/staff/begin_work'
-    begin_work = requests.post(url=begin_url,headers=l.store_headers,json=data3)
+    begin_work = requests.post(url=begin_url,headers=l.store_headers,json=data3,verify=False)
     print(begin_work.json())
     time.sleep(2)
 
     # 获取伙伴状态
     staff_url = l.store_host + '/project_paperless/manage/staff/get_staff_status'
-    get_staff_status = requests.get(url=staff_url,headers=l.store_headers)
+    get_staff_status = requests.get(url=staff_url,headers=l.store_headers,verify=False)
 
     # 门店提交看片
     data4 = {
@@ -71,12 +70,12 @@ def shenhe_order():
         }]
     }
     submit_url = l.store_host + '/project_paperless/manage/second_retoucher/submit_final_photo'
-    submit_res = requests.post(url=submit_url,headers=l.store_headers,json=data4)
+    submit_res = requests.post(url=submit_url,headers=l.store_headers,json=data4,verify=False)
     print(submit_res.json())
 
     # 关闭门店看片接单
     end_url = l.store_host + '/project_paperless/manage/staff/end_work'
-    end_work = requests.post(url=end_url,headers=l.store_headers,json=data3)
+    end_work = requests.post(url=end_url,headers=l.store_headers,json=data3,verify=False)
     print(end_work.json())
 
     # 门店完成订单
@@ -84,7 +83,7 @@ def shenhe_order():
 	    "id": order_id
     }
     finish_url = l.store_host + '/himo_product_store/admin/order/finish'
-    order_finish = requests.post(url=finish_url,headers=l.store_headers,json=data5)
+    order_finish = requests.post(url=finish_url,headers=l.store_headers,json=data5,verify=False)
     print(order_finish.json())
 
     # 录入工作量
@@ -105,7 +104,7 @@ def shenhe_order():
 	}]
 }
     workloads_url = l.store_host + '/himo_product_store/admin/order/set_order_workloads'
-    workloads = requests.post(url=workloads_url,headers=l.store_headers,json=data6)
+    workloads = requests.post(url=workloads_url,headers=l.store_headers,json=data6,verify=False)
     print(workloads.json())
 if __name__ == '__main__':
     shenhe_order()

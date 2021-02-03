@@ -15,23 +15,23 @@ from config import LoginConfig as l
 def creatorder():
     data = {
         "type": "person_order",
-        "userId": 99999901,
+        "userId": 4699682,
         "userName": "lemon",
-        "userPhone": "19999999991",
+        "userPhone": "18157566499",
         "userSex": "male",
         "userBirthday": "2000-01-31 00:00:00",
-        "money": 179,
+        "money": 159,
         "reachedPeopleNum": 1,
-        "realMoney": 179,
-        "reserveTime": "2021-01-27 20:30:00",
+        "realMoney": 159,
+        "reserveTime": "2021-01-31 20:30:00",
         "productInfo": [{
             "productId": 5403,
             "isPrimary": 1,
             "parentId": 0,
             "productName": "精致签证照-精致签证照",
             "productImage": "https://fed.dev.hzmantu.com/erp2/精致签证照.jpg",
-            "productPrice": "179.00",
-            "productMoney": 179,
+            "productPrice": "159.00",
+            "productMoney": 159,
             "peopleNum": 1,
             "photosNum": 1,
             "num": 1,
@@ -46,7 +46,7 @@ def creatorder():
 
 
     url = l.store_host + '/himo_product_store/admin/order/create'
-    res = requests.post(url=url, headers=l.store_headers, json=data)
+    res = requests.post(url=url, headers=l.store_headers, json=data,verify=False)
     res = res.json()
     order_id = res['msg']['id']
     order_no = res['msg']['order_no']
@@ -60,7 +60,7 @@ def creatorder():
         "orderDiffId": order_diffid
     }
     zf_url = l.store_host + '/himo_product_store/admin/order/paid'
-    pay = requests.post(url=zf_url, headers=l.store_headers, json=data1)
+    pay = requests.post(url=zf_url, headers=l.store_headers, json=data1,verify=False)
     a = pay.json()['msg']['order_sale_sku'][0]['id']
 
 
@@ -75,7 +75,7 @@ def creatorder():
         }]
     }
     qd_url = l.store_host + '/project_paperless/manage/process/user_sign_in'
-    qiandao = requests.post(url=qd_url, headers=l.store_headers,json=data2)
+    qiandao = requests.post(url=qd_url, headers=l.store_headers,json=data2,verify=False)
 
     print(qiandao.json())
 
@@ -85,7 +85,7 @@ def creatorder():
         "orderNo": order_no
     }
     process_url = l.store_host + '/project_paperless/manage/order/list'
-    get_process = requests.get(url=process_url,headers=l.store_headers,params=data3)
+    get_process = requests.get(url=process_url,headers=l.store_headers,params=data3,verify=False)
     process_json = get_process.json()
     print(process_json)
     process_id = jsonpath.jsonpath(process_json,"$..process_id")[0]
@@ -95,7 +95,7 @@ def creatorder():
         "orderId": order_id
     }
     push_url = l.store_host + '/project_paperless/manage/cameraman/push_order_to_cameraman'
-    push_order = requests.post(url=push_url,headers=l.store_headers,json=data4)
+    push_order = requests.post(url=push_url,headers=l.store_headers,json=data4,verify=False)
     print(push_order.json())
     # 云端上传照片
     tj_url = l.store_host + '/project_paperless/manage/cameraman/complete_select_photo'
@@ -135,7 +135,7 @@ def creatorder():
             "processId": process_id
     }
 
-    select_photo = requests.post(url=tj_url, headers=l.store_headers, json=tj_data)
+    select_photo = requests.post(url=tj_url, headers=l.store_headers, json=tj_data,verify=False)
     print(select_photo.json())
     msg = select_photo.json()['msg']
     stream_num = msg['stream_num']
