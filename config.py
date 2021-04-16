@@ -1,11 +1,11 @@
 class LoginConfig:
-    dev_host = 'https://api.pre.hzmantu.com'  # 测试地址
-    h5_host = 'https://api.pre.hzmantu.com'  # h5测试地址
-    bms_host = 'https://api.pre.hzmantu.com'  # bms测试地址
+    dev_host = 'https://api.dev.hzmantu.com'  # 测试地址
+    h5_host = 'https://api.dev.hzmantu.com'  # h5测试地址
+    bms_host = 'https://api.dev.hzmantu.com'  # bms测试地址
     store_host = 'https://api.pre.hzmantu.com'# 门店测试地址
     release_host = 'project-cloud.dev.hzmantu.com'  # release环境
-    bms_headers = {'x-stream-id': '.2bA3tRWgTfLhIO8tff2inHZ7Fx07WIf'}
-    store_headers = {'x-stream-id': '.nGIKXOiswzgBdl2Q34K9wUzL5F63hmo'}
+    bms_headers = {'x-stream-id': '.qLOcI0Llq7DbUcOm394hMXfXktWZEaN'}
+    store_headers = {'x-stream-id': '.iHoaqz8I4UtWrddippIJK7Tn2cxLYZ7'}
     cloud_jdbc_pool = 'cloud_test'  # 数据库缓冲池配置
     cloud_database_schemas = 'project-cloud'  # 云端数据库
     himo_store_host = 'api.pre.hzmantu.com'  # 海马体门店测试地址

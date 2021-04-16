@@ -1,6 +1,9 @@
 import requests
 from config import LoginConfig as l
 from creatgiftcard import login_id
+import urllib3
+urllib3.disable_warnings()
+
 def getproduct_gift():
     url = l.bms_host + '/himo_product/admin/product_card_order/input'
     # 通用产品券模版id873，可用于最大人数
@@ -18,7 +21,7 @@ def getproduct_gift():
             "count": 1,
             "stop_usage": "2021-12-31 23:59:59",
             "start_usage": "2020-11-30 00:00:00",
-            "template_id": 1078,
+            "template_id": 354,
             "title": "1"
         }
     }
@@ -26,6 +29,7 @@ def getproduct_gift():
     msg = res.json()['msg']
     for i in msg:
         code = i['code']
+    print(code)
     return code
 
 def use_productcard():
@@ -41,8 +45,8 @@ def use_productcard():
         print("产品卡绑定成功")
     else:
         print("绑定失败")
-    # res = res.json()
-    # print(res)
+    res = res.json()
+    print(res)
 
 if __name__ == '__main__':
-    use_productcard()
+    getproduct_gift()

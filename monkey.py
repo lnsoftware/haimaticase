@@ -1,4 +1,4 @@
-from subprocess import Popen,PIPE,STDOUT
+from subprocess import Popen, PIPE, STDOUT
 import datetime
 time = datetime.datetime.now().strftime('%Y%m%d%H%M%S')
 
@@ -20,8 +20,9 @@ def run_shell(cmd):
 
 i = 0
 
-while i <10:
-    run_shell('adb shell monkey -p cn.mainto.maintoapp -v -v -v 10000')
+while i < 10:
+    # monkey随机测试
+    run_shell('adb shell monkey -p cn.mainto.maintoapp --pct-syskeys 0 -v -v -v 10000')
     i += 1
     from time import sleep
     sleep(3)

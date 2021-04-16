@@ -1,0 +1,7 @@
+rightLogin:
+  phone: 18157566499
+  pwd: 123456
+
+errorLogin:
+  phone: 18157566499
+  pwd: 1234567

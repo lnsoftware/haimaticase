@@ -2,47 +2,48 @@ import requests
 import jsonpath
 from creatgiftcard import login_id
 from config import LoginConfig as l
-
+import urllib3
+urllib3.disable_warnings()
 
 def batch_creat():
     url = l.bms_host + '/himo_product/admin/preferential_card/batch_create'
     # 折扣券参数
-    data1 = {
+    data = {
         "title": "1",
         "count": 1,
         "tempType": "discount_coupon",
-        "template_id": 1220,
-        "discount": "5",
+        "template_id": 1384,
+        "discount": "7",
         "time": ["2020-12-24 00:00:00", "2022-01-31 23:59:59"],
         "buy_channel": "personal",
         "start_usage": "2020-12-24 00:00:00",
         "stop_usage": "2022-01-31 23:59:59"
     }
     # 立减券参数  id 3123 每天可用的立减券  id 1221 周末不可用的立减券  pre通用立减id5037  折扣5038
-    data = {
+    data1 = {
         "title": "111",
         "count": 1,
         "tempType": "decrease_coupon",
-        "template_id": 5602,
-        "discount": "200",
+        "template_id": 5038,
+        "discount": "60",
         "time": ["2020-09-25 00:00:00", "2022-01-27 23:59:59"],
         "buy_channel": "personal",
         "start_usage": "2020-09-27 00:00:00",
-        "stop_usage": "2022-01-27 23:59:59"
+        "stop_usage": "2022-02-12 23:59:59"
     }
 
     # 加修券
-#     data = {
-    # 	"title": "1",
-    # 	"count": 1,
-    # 	"tempType": "ds_repair",
-    # 	"template_id": 5240,
-    # 	"time": ["2021-01-20 00:00:00", "2022-02-28 23:59:59"],
-    # 	"buy_channel": "personal",
-    # 	"start_usage": "2021-01-20 00:00:00",
-    # 	"stop_usage": "2022-02-28 23:59:59",
-    # 	"discount": 20
-    # }
+    data3 = {
+    	"title": "1",
+    	"count": 1,
+    	"tempType": "ds_repair",
+    	"template_id": 5609,
+    	"time": ["2021-01-20 00:00:00", "2022-02-28 23:59:59"],
+    	"buy_channel": "personal",
+    	"start_usage": "2021-01-20 00:00:00",
+    	"stop_usage": "2022-02-28 23:59:59",
+    	"discount": 200
+    }
 
 
     res = requests.post(url=url,headers=l.bms_headers,json=data,verify=False)
@@ -70,8 +71,8 @@ def get_card():
 def bind_coupons():
     url = l.bms_host + '/appointment_platform/user/preferential/bind_preferential_code'
     data = {
-    "preferentialCode":get_card()
-}
+        "preferentialCode":get_card()
+    }
     headers = {
         'x-stream-id': login_id()
 
