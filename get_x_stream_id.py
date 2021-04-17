@@ -10,6 +10,7 @@ def get_authCode():
     sso_path = "/login/goto/eyJ0aXRsZSI6Iue8puWbvuS6keerryIsInJlZGlyZWN0IjoiY2xvdWQ6Ly9wcm9kdWN0aW9uL2xvZ2luLmh0bWwjLz90b2tlbj0ifQ=="
     cloud_login_path = l.cloud_login_url + sso_path
     res = requests.get(url=cloud_login_path)
+    print(res.text)
     authCode = re.findall(r'authCode = \'(.+)\';', res.text)[0]
     assert len(authCode) >= 15
     return authCode

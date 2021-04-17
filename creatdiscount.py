@@ -34,15 +34,15 @@ def batch_creat():
 
     # 加修券
     data3 = {
-    	"title": "1",
-    	"count": 1,
-    	"tempType": "ds_repair",
-    	"template_id": 5609,
-    	"time": ["2021-01-20 00:00:00", "2022-02-28 23:59:59"],
-    	"buy_channel": "personal",
-    	"start_usage": "2021-01-20 00:00:00",
-    	"stop_usage": "2022-02-28 23:59:59",
-    	"discount": 200
+        "title": "1",
+        "count": 1,
+        "tempType": "ds_repair",
+        "template_id": 5609,
+        "time": ["2021-01-20 00:00:00", "2022-02-28 23:59:59"],
+        "buy_channel": "personal",
+        "start_usage": "2021-01-20 00:00:00",
+        "stop_usage": "2022-02-28 23:59:59",
+        "discount": 200
     }
 
 

@@ -4,7 +4,7 @@ class LoginConfig:
     bms_host = 'https://api.dev.hzmantu.com'  # bms测试地址
     store_host = 'https://api.pre.hzmantu.com'# 门店测试地址
     release_host = 'project-cloud.dev.hzmantu.com'  # release环境
-    bms_headers = {'x-stream-id': '.qLOcI0Llq7DbUcOm394hMXfXktWZEaN'}
+    bms_headers = {'x-stream-id': '.paTO7KO3RtjzA4mHwvUQC1r2tC8LCnG'}
     store_headers = {'x-stream-id': '.iHoaqz8I4UtWrddippIJK7Tn2cxLYZ7'}
     cloud_jdbc_pool = 'cloud_test'  # 数据库缓冲池配置
     cloud_database_schemas = 'project-cloud'  # 云端数据库
