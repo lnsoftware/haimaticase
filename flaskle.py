@@ -7,7 +7,7 @@ app = Flask(__name__)
 @app.route("/bind/coupon", methods=["post"])
 def bind_coupon():
     # 默认返回内容
-    return_dict = {'return_code': '200', 'return_info': '处理成功', 'result': None}
+    return_dict = {'return_code': '200', 'result': None}
 
     # 判断传入的json数据是否为空
     if len(request.get_data()) == 0:
